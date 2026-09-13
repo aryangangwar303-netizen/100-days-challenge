@@ -143,3 +143,133 @@ int main() {
 
     return 0;
 }
+
+Q5: Write a program to convert temperature from Celsius to Fahrenheit.
+
+/*
+Sample Test Cases:
+Input 1:
+0
+Output 1:
+Fahrenheit=32
+
+Input 2:
+100
+Output 2:
+Fahrenheit=212
+
+*/
+#include <stdio.h>
+
+int main() {
+    float celsius, fahrenheit;
+
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &celsius);
+
+    fahrenheit = (celsius * 9 / 5) + 32;
+
+    printf("Temperature in Fahrenheit = %.2f\n", fahrenheit);
+
+    return 0;
+}
+
+Q6: Write a program to swap two numbers using a third variable.
+
+/*
+Sample Test Cases:
+Input 1:
+3 5
+Output 1:
+After swap: 5 3
+
+Input 2:
+-1 1
+Output 2:
+After swap: 1 -1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int a, b, temp;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    temp = a;
+    a = b;
+    b = temp;
+
+    printf("After swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    return 0;
+}
+
+Q7: Write a program to swap two numbers without using a third variable.
+
+/*
+Sample Test Cases:
+Input 1:
+10 20
+Output 1:
+After swap: 20 10
+
+Input 2:
+7 14
+Output 2:
+After swap: 14 7
+
+*/
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    a = a + b;
+    b = a - b;
+    a = a - b;
+
+    printf("After swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    return 0;
+}
+
+Q8: Write a program to find and display the sum of the first n natural numbers.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+Output 1:
+Sum=15
+
+Input 2:
+10
+Output 2:
+Sum=55
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        sum = sum + i;
+    }
+
+    printf("Sum of first %d natural numbers = %d\n", n, sum);
+
+    return 0;
+}
