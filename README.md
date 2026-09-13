@@ -1457,6 +1457,81 @@ int main() {
     return 0;
 }
 
+Q36: Write a program to find the HCF (GCD) of two numbers.
+
+/*
+Sample Test Cases:
+Input 1:
+12 18
+Output 1:
+6
+
+Input 2:
+7 9
+Output 2:
+1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int a, b, remainder;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    while (b != 0) {
+        remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+
+    printf("HCF (GCD) = %d", a);
+
+    return 0;
+}
+
+Q37: Write a program to find the LCM of two numbers.
+
+/*
+Sample Test Cases:
+Input 1:
+4 5
+Output 1:
+20
+
+Input 2:
+7 3
+Output 2:
+21
+
+*/
+#include <stdio.h>
+
+int main() {
+    int a, b, i, lcm;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    if (a > b)
+        i = a;
+    else
+        i = b;
+
+    while (1) {
+        if (i % a == 0 && i % b == 0) {
+            lcm = i;
+            break;
+        }
+        i++;
+    }
+
+    printf("LCM = %d", lcm);
+
+    return 0;
+}
+
 Q38: Write a program to find the sum of digits of a number.
 
 /*
@@ -2250,6 +2325,752 @@ int main() {
     for (i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
+
+    return 0;
+}
+
+Q57: Find the sum of array elements.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+2 4 6 8
+Output 1:
+20
+
+Input 2:
+3
+1 1 1
+Output 2:
+3
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, sum = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        sum = sum + arr[i];
+    }
+
+    printf("Sum of array elements = %d", sum);
+
+    return 0;
+}
+
+Q58: Find the maximum and minimum element in an array.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+2 9 1 4 7
+Output 1:
+Max=9, Min=1
+
+Input 2:
+3
+10 10 10
+Output 2:
+Max=10, Min=10
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+    int max, min;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    max = arr[0];
+    min = arr[0];
+
+    for (i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    printf("Maximum element = %d\n", max);
+    printf("Minimum element = %d", min);
+
+    return 0;
+}
+
+Q59: Count even and odd numbers in an array.
+
+/*
+Sample Test Cases:
+Input 1:
+6
+1 2 3 4 5 6
+Output 1:
+Even=3, Odd=3
+
+Input 2:
+4
+2 4 6 8
+Output 2:
+Even=4, Odd=0
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+    int even = 0, odd = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+
+        if (arr[i] % 2 == 0)
+            even++;
+        else
+            odd++;
+    }
+
+    printf("Even numbers = %d\n", even);
+    printf("Odd numbers = %d", odd);
+
+    return 0;
+}
+
+Q60: Count positive, negative, and zero elements in an array.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+-1 0 1 2 -2
+Output 1:
+Positive=2, Negative=2, Zero=1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+    int positive = 0, negative = 0, zero = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+
+        if (arr[i] > 0)
+            positive++;
+        else if (arr[i] < 0)
+            negative++;
+        else
+            zero++;
+    }
+
+    printf("Positive elements = %d\n", positive);
+    printf("Negative elements = %d\n", negative);
+    printf("Zero elements = %d", zero);
+
+    return 0;
+}
+
+Q61: Search for an element in an array using linear search.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 3 4 5
+3
+Output 1:
+Found at index 2
+
+Input 2:
+4
+10 20 30 40
+25
+Output 2:
+-1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, search;
+    int found = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter element to search: ");
+    scanf("%d", &search);
+
+    for (i = 0; i < n; i++) {
+        if (arr[i] == search) {
+            printf("Element found at position %d", i + 1);
+            found = 1;
+            break;
+        }
+    }
+
+    if (found == 0) {
+        printf("Element not found");
+    }
+
+    return 0;
+}
+
+Q62: Reverse an array without taking extra space.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+1 2 3 4
+Output 1:
+4 3 2 1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, temp;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Reverse the array
+    for (i = 0; i < n / 2; i++) {
+        temp = arr[i];
+        arr[i] = arr[n - 1 - i];
+        arr[n - 1 - i] = temp;
+    }
+
+    printf("Reversed array:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+Q63: Merge two arrays.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+1 2 3
+2
+4 5
+Output 1:
+1 2 3 4 5
+
+*/
+
+#include <stdio.h>
+
+int main() {
+    int a[100], b[100], merged[200];
+    int n1, n2, i;
+
+    printf("Enter number of elements in first array: ");
+    scanf("%d", &n1);
+
+    printf("Enter elements of first array:\n");
+    for (i = 0; i < n1; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    printf("Enter number of elements in second array: ");
+    scanf("%d", &n2);
+
+    printf("Enter elements of second array:\n");
+    for (i = 0; i < n2; i++) {
+        scanf("%d", &b[i]);
+    }
+
+    // Copy first array
+    for (i = 0; i < n1; i++) {
+        merged[i] = a[i];
+    }
+
+    // Copy second array
+    for (i = 0; i < n2; i++) {
+        merged[n1 + i] = b[i];
+    }
+
+    printf("Merged array:\n");
+    for (i = 0; i < n1 + n2; i++) {
+        printf("%d ", merged[i]);
+    }
+
+    return 0;
+}
+
+Q64: Find the digit that occurs the most times in an integer number.
+
+/*
+Sample Test Cases:
+Input 1:
+112233
+Output 1:
+1
+
+Input 2:
+887799
+Output 2:
+7
+
+*/
+#include <stdio.h>
+
+int main() {
+    long long n;
+    int digit, i;
+    int count[10] = {0};
+    int maxCount = 0, mostFrequent;
+
+    printf("Enter an integer: ");
+    scanf("%lld", &n);
+
+    if (n < 0)
+        n = -n;
+
+    if (n == 0) {
+        count[0] = 1;
+    }
+
+    while (n > 0) {
+        digit = n % 10;
+        count[digit]++;
+        n = n / 10;
+    }
+
+    for (i = 0; i < 10; i++) {
+        if (count[i] > maxCount) {
+            maxCount = count[i];
+            mostFrequent = i;
+        }
+    }
+
+    printf("Most frequent digit = %d\n", mostFrequent);
+    printf("It occurs %d times", maxCount);
+
+    return 0;
+}
+
+Q65: Search in a sorted array using binary search.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 3 5 7 9
+7
+Output 1:
+Found at index 3
+
+Input 2:
+5
+1 3 5 7 9
+6
+Output 2:
+-1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, key;
+    int low, high, mid;
+    int found = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements in sorted order:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+
+    low = 0;
+    high = n - 1;
+
+    while (low <= high) {
+        mid = (low + high) / 2;
+
+        if (arr[mid] == key) {
+            printf("Element found at position %d", mid + 1);
+            found = 1;
+            break;
+        }
+        else if (arr[mid] < key) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+
+    if (found == 0) {
+        printf("Element not found");
+    }
+
+    return 0;
+}
+
+Q66: Insert an element in a sorted array at the appropriate position.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 4 5 6
+3
+Output 1:
+1 2 3 4 5 6
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, element, pos;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements in sorted order:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter element to insert: ");
+    scanf("%d", &element);
+
+    // Find the appropriate position
+    pos = 0;
+    while (pos < n && arr[pos] < element) {
+        pos++;
+    }
+
+    // Shift elements to the right
+    for (i = n; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    // Insert the element
+    arr[pos] = element;
+    n++;
+
+    printf("Array after insertion:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+Q67: Insert an element in an array at a given position.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+10 20 30 40
+2 15
+Output 1:
+10 20 15 30 40
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, element, position;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter element to insert: ");
+    scanf("%d", &element);
+
+    printf("Enter position: ");
+    scanf("%d", &position);
+
+    // Shift elements to the right
+    for (i = n; i >= position; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    // Insert element
+    arr[position - 1] = element;
+    n++;
+
+    printf("Array after insertion:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+Q68: Delete an element from an array.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 3 4 5
+2
+Output 1:
+1 2 4 5
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, position;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter position to delete: ");
+    scanf("%d", &position);
+
+    // Shift elements to the left
+    for (i = position - 1; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    n--;
+
+    printf("Array after deletion:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+Q69: Find the second largest element in an array.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+10 20 30 40 50
+Output 1:
+40
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+    int largest, secondLargest;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    largest = secondLargest = arr[0];
+
+    for (i = 1; i < n; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    printf("Second largest element = %d", secondLargest);
+
+    return 0;
+}
+
+Q70: Rotate an array to the right by k positions.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 3 4 5
+2
+Output 1:
+4 5 1 2 3
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, k, i, j, temp;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter k: ");
+    scanf("%d", &k);
+
+    k = k % n;
+
+    // Rotate array to the right k times
+    for (i = 0; i < k; i++) {
+        temp = arr[n - 1];
+
+        for (j = n - 1; j > 0; j--) {
+            arr[j] = arr[j - 1];
+        }
+
+        arr[0] = temp;
+    }
+
+    printf("Array after rotation:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+Q71: Read and print a matrix.
+
+/*
+Sample Test Cases:
+Input 1:
+2 2
+1 2
+3 4
+Output 1:
+1 2
+3 4
+
+*/
+#include <stdio.h>
+
+int main() {
+    int matrix[10][10];
+    int rows, cols, i, j;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    printf("Enter matrix elements:\n");
+
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    printf("Matrix is:\n");
+
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q72: Find the sum of all elements in a matrix.
+
+/*
+Sample Test Cases:
+Input 1:
+2 3
+1 2 3
+4 5 6
+Output 1:
+21
+
+*/
+#include <stdio.h>
+
+int main() {
+    int matrix[10][10];
+    int rows, cols, i, j, sum = 0;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    printf("Enter matrix elements:\n");
+
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+            sum = sum + matrix[i][j];
+        }
+    }
+
+    printf("Sum of all elements = %d", sum);
 
     return 0;
 }
