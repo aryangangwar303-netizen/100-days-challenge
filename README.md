@@ -868,3 +868,1388 @@ int main() {
 
     return 0;
 }
+
+Q22: Write a program to find profit or loss percentage given cost price and selling price.
+
+/*
+Sample Test Cases:
+Input 1:
+1000 1200
+Output 1:
+Profit 20%
+
+Input 2:
+1000 800
+Output 2:
+Loss 20%
+
+Input 3:
+1000 1000
+Output 3:
+No Profit No Loss
+
+*/
+#include <stdio.h>
+
+int main() {
+    float cp, sp, profit, loss, percentage;
+
+    printf("Enter cost price: ");
+    scanf("%f", &cp);
+
+    printf("Enter selling price: ");
+    scanf("%f", &sp);
+
+    if (sp > cp) {
+        profit = sp - cp;
+        percentage = (profit / cp) * 100;
+        printf("Profit = %.2f\n", profit);
+        printf("Profit Percentage = %.2f%%", percentage);
+    }
+    else if (cp > sp) {
+        loss = cp - sp;
+        percentage = (loss / cp) * 100;
+        printf("Loss = %.2f\n", loss);
+        printf("Loss Percentage = %.2f%%", percentage);
+    }
+    else {
+        printf("No Profit, No Loss");
+    }
+
+    return 0;
+}
+
+Q23: Write a program to calculate library fine based on late days as follows: 
+First 5 days late: ₹2/day 
+Next 5 days late: ₹4/day 
+Next 20 days days late: ₹6/day 
+More than 30 days: Membership Cancelled.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+Output 1:
+Fine ₹8
+
+Input 2:
+8
+Output 2:
+Fine ₹22
+
+Input 3:
+15
+Output 3:
+Fine ₹60
+
+Input 4:
+31
+Output 4:
+Membership Cancelled
+
+*/
+#include <stdio.h>
+
+int main() {
+    int days, fine;
+
+    printf("Enter number of late days: ");
+    scanf("%d", &days);
+
+    if (days <= 5) {
+        fine = days * 2;
+        printf("Fine = Rs. %d", fine);
+    }
+    else if (days <= 10) {
+        fine = (5 * 2) + ((days - 5) * 4);
+        printf("Fine = Rs. %d", fine);
+    }
+    else if (days <= 30) {
+        fine = (5 * 2) + (5 * 4) + ((days - 10) * 6);
+        printf("Fine = Rs. %d", fine);
+    }
+    else {
+        printf("Membership Cancelled");
+    }
+
+    return 0;
+}
+
+Q24: Write a program to calculate electricity bill based on units consumed with these rates: 
+First 100 units at ₹5/unit 
+Next 100 units at ₹7/unit 
+Next 100 units at ₹10/unit 
+Above at ₹12/unit
+
+/*
+Sample Test Cases:
+Input 1:
+50
+Output 1:
+Bill: ₹250
+
+Input 2:
+150
+Output 2:
+Bill: ₹850
+
+Input 3:
+250
+Output 3:
+Bill: ₹1700
+
+*/
+#include <stdio.h>
+
+int main() {
+    int units;
+    float bill;
+
+    printf("Enter units consumed: ");
+    scanf("%d", &units);
+
+    if (units <= 100) {
+        bill = units * 5;
+    }
+    else if (units <= 200) {
+        bill = (100 * 5) + (units - 100) * 7;
+    }
+    else if (units <= 300) {
+        bill = (100 * 5) + (100 * 7) + (units - 200) * 10;
+    }
+    else {
+        bill = (100 * 5) + (100 * 7) + (100 * 10) + (units - 300) * 12;
+    }
+
+    printf("Electricity Bill = Rs. %.2f", bill);
+
+    return 0;
+}
+
+Q25: Write a program to implement a basic calculator using switch-case for +, -, *, /, %.
+
+/*
+Sample Test Cases:
+Input 1:
+4 2 +
+Output 1:
+6
+
+Input 2:
+10 3 %
+Output 2:
+1
+
+Input 3:
+15 5 /
+Output 3:
+3
+
+*/
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    char operator;
+
+    printf("Enter first number: ");
+    scanf("%d", &a);
+
+    printf("Enter operator (+, -, *, /, %%): ");
+    scanf(" %c", &operator);
+
+    printf("Enter second number: ");
+    scanf("%d", &b);
+
+    switch (operator) {
+        case '+':
+            printf("Result = %d", a + b);
+            break;
+
+        case '-':
+            printf("Result = %d", a - b);
+            break;
+
+        case '*':
+            printf("Result = %d", a * b);
+            break;
+
+        case '/':
+            if (b != 0)
+                printf("Result = %d", a / b);
+            else
+                printf("Division by zero is not allowed");
+            break;
+
+        case '%':
+            if (b != 0)
+                printf("Result = %d", a % b);
+            else
+                printf("Modulo by zero is not allowed");
+            break;
+
+        default:
+            printf("Invalid operator");
+    }
+
+    return 0;
+}
+
+Q26: Write a program to print numbers from 1 to n.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+Output 1:
+1 2 3 4 5
+
+Input 2:
+3
+Output 2:
+1 2 3
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        printf("%d ", i);
+    }
+
+    return 0;
+}
+
+Q27: Write a program to print the sum of the first n odd numbers.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+Output 1:
+9
+
+Input 2:
+5
+Output 2:
+25
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        sum = sum + (2 * i - 1);
+    }
+
+    printf("Sum of first %d odd numbers = %d", n, sum);
+
+    return 0;
+}
+
+Q28: Write a program to print the product of even numbers from 1 to n.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+Output 1:
+8 (2 * 4)
+
+Input 2:
+6
+Output 2:
+48 (2 * 4 * 6)
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int product = 1;
+
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    for (i = 2; i <= n; i += 2) {
+        product = product * i;
+    }
+
+    printf("Product = %d", product);
+
+    return 0;
+}
+
+Q29: Write a program to calculate the factorial of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+Output 1:
+120
+
+Input 2:
+3
+Output 2:
+6
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    long long factorial = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        factorial = factorial * i;
+    }
+
+    printf("Factorial of %d = %lld", n, factorial);
+
+    return 0;
+}
+
+Q30: Write a program to reverse a given number.
+
+/*
+Sample Test Cases:
+Input 1:
+1234
+Output 1:
+4321
+
+Input 2:
+100
+Output 2:
+1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, reverse = 0, digit;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    while (n != 0) {
+        digit = n % 10;
+        reverse = reverse * 10 + digit;
+        n = n / 10;
+    }
+
+    printf("Reversed number = %d", reverse);
+
+    return 0;
+}
+
+Q31: Write a program to take a number as input and print its equivalent binary representation.
+
+/*
+Sample Test Cases:
+Input 1:
+10
+Output 1:
+1010
+
+Input 2:
+7
+Output 2:
+111
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, binary[32], i = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n == 0) {
+        printf("Binary = 0");
+        return 0;
+    }
+
+    while (n > 0) {
+        binary[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+
+    printf("Binary = ");
+
+    for (i = i - 1; i >= 0; i--) {
+        printf("%d", binary[i]);
+    }
+
+    return 0;
+}
+
+Q32: Write a program to check if a number is a palindrome.
+
+/*
+Sample Test Cases:
+Input 1:
+121
+Output 1:
+Palindrome
+
+Input 2:
+123
+Output 2:
+Not palindrome
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, original, reverse = 0, digit;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    original = n;
+
+    while (n != 0) {
+        digit = n % 10;
+        reverse = reverse * 10 + digit;
+        n = n / 10;
+    }
+
+    if (original == reverse) {
+        printf("%d is a palindrome", original);
+    } else {
+        printf("%d is not a palindrome", original);
+    }
+
+    return 0;
+}
+
+Q33: Write a program to check if a number is an Armstrong number.
+
+/*
+Sample Test Cases:
+Input 1:
+153
+Output 1:
+Armstrong
+
+Input 2:
+123
+Output 2:
+Not Armstrong
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, original, digit, sum = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    original = n;
+
+    while (n != 0) {
+        digit = n % 10;
+        sum = sum + (digit * digit * digit);
+        n = n / 10;
+    }
+
+    if (sum == original) {
+        printf("%d is an Armstrong number", original);
+    } else {
+        printf("%d is not an Armstrong number", original);
+    }
+
+    return 0;
+}
+
+Q34: Write a program to check if a number is prime.
+
+/*
+Sample Test Cases:
+Input 1:
+7
+Output 1:
+Prime
+
+Input 2:
+10
+Output 2:
+Not prime
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i, flag = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n <= 1) {
+        flag = 1;
+    } else {
+        for (i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                flag = 1;
+                break;
+            }
+        }
+    }
+
+    if (flag == 0) {
+        printf("%d is a prime number", n);
+    } else {
+        printf("%d is not a prime number", n);
+    }
+
+    return 0;
+}
+
+Q35: Write a program to print all factors of a given number.
+
+/*
+Sample Test Cases:
+Input 1:
+6
+Output 1:
+1 2 3 6
+
+Input 2:
+10
+Output 2:
+1 2 5 10
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    printf("Factors of %d are: ", n);
+
+    for (i = 1; i <= n; i++) {
+        if (n % i == 0) {
+            printf("%d ", i);
+        }
+    }
+
+    return 0;
+}
+
+Q38: Write a program to find the sum of digits of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+123
+Output 1:
+6
+
+Input 2:
+999
+Output 2:
+27
+
+*/
+
+#include <stdio.h>
+
+int main() {
+    int n, digit, sum = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    while (n != 0) {
+        digit = n % 10;
+        sum = sum + digit;
+        n = n / 10;
+    }
+
+    printf("Sum of digits = %d", sum);
+
+    return 0;
+}
+
+Q39: Write a program to find the product of odd digits of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+12345
+Output 1:
+15 (1*3*5)
+
+Input 2:
+2468
+Output 2:
+1 (no odd digits, assume 1)
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, digit, product = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    while (n != 0) {
+        digit = n % 10;
+
+        if (digit % 2 != 0) {
+            product = product * digit;
+        }
+
+        n = n / 10;
+    }
+
+    printf("Product of odd digits = %d", product);
+
+    return 0;
+}
+
+Q40: Write a program to find the 1’s complement of a binary number and print it.
+
+/*
+Sample Test Cases:
+Input 1:
+1010
+Output 1:
+0101
+
+Input 2:
+1111
+Output 2:
+0000
+
+*/
+#include <stdio.h>
+
+int main() {
+    char binary[100];
+    int i;
+
+    printf("Enter a binary number: ");
+    scanf("%s", binary);
+
+    printf("1's complement = ");
+
+    for (i = 0; binary[i] != '\0'; i++) {
+        if (binary[i] == '0') {
+            printf("1");
+        } else if (binary[i] == '1') {
+            printf("0");
+        } else {
+            printf("\nInvalid binary number");
+            return 0;
+        }
+    }
+
+    return 0;
+}
+
+Q41: Write a program to swap the first and last digit of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+1234
+Output 1:
+4231
+
+Input 2:
+1001
+Output 2:
+1001
+
+*/
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n, first, last, digits, power, middle, result;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n < 10) {
+        printf("After swapping = %d", n);
+        return 0;
+    }
+
+    last = n % 10;
+
+    digits = (int)log10(n);
+    power = (int)pow(10, digits);
+
+    first = n / power;
+
+    middle = n % power;
+    middle = middle / 10;
+
+    result = last * power + middle * 10 + first;
+
+    printf("After swapping = %d", result);
+
+    return 0;
+}
+
+Q42: Write a program to check if a number is a perfect number.
+
+/*
+Sample Test Cases:
+Input 1:
+6
+Output 1:
+Perfect number
+
+Input 2:
+10
+Output 2:
+Not perfect number
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for (i = 1; i < n; i++) {
+        if (n % i == 0) {
+            sum = sum + i;
+        }
+    }
+
+    if (sum == n) {
+        printf("%d is a perfect number", n);
+    } else {
+        printf("%d is not a perfect number", n);
+    }
+
+    return 0;
+}
+
+Q43: Write a program to check if a number is a strong number.
+
+/*
+Sample Test Cases:
+Input 1:
+145
+Output 1:
+Strong number
+
+Input 2:
+123
+Output 2:
+Not strong number
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, original, digit, i;
+    int sum = 0, factorial;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    original = n;
+
+    while (n != 0) {
+        digit = n % 10;
+
+        factorial = 1;
+        for (i = 1; i <= digit; i++) {
+            factorial = factorial * i;
+        }
+
+        sum = sum + factorial;
+        n = n / 10;
+    }
+
+    if (sum == original) {
+        printf("%d is a strong number", original);
+    } else {
+        printf("%d is not a strong number", original);
+    }
+
+    return 0;
+}
+
+Q44: Write a program to find the sum of the series: 1 + 3/4 + 5/6 + 7/8 + … up to n terms.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+Output 1:
+Approximate sum: 3.3
+
+Input 2:
+5
+Output 2:
+Approximate sum: 4.4
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float sum = 0.0;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        if (i == 1) {
+            sum = sum + 1;
+        } else {
+            sum = sum + (float)(2 * i - 1) / (2 * i);
+        }
+    }
+
+    printf("Sum of the series = %.2f", sum);
+
+    return 0;
+}
+
+Q45: Write a program to find the sum of the series: 2/3 + 4/7 + 6/11 + 8/15 + ... up to n terms.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+Output 1:
+Approximate sum: 1.56
+
+Input 2:
+5
+Output 2:
+Approximate sum: 2.22
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float sum = 0.0;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        sum = sum + (float)(2 * i) / (4 * i - 1);
+    }
+
+    printf("Sum of the series = %.2f", sum);
+
+    return 0;
+}
+
+Q46: Write a program to print the following pattern:
+*****
+*****
+*****
+*****
+*****
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+*****
+*****
+*****
+*****
+*****
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    for (i = 1; i <= 5; i++) {
+        for (j = 1; j <= 5; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q47: Write a program to print the following pattern:
+*
+**
+***
+****
+*****
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+*
+**
+***
+****
+*****
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    for (i = 1; i <= 5; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q48: Write a program to print the following pattern:
+1
+12
+123
+1234
+12345
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+1
+12
+123
+1234
+12345
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    for (i = 1; i <= 5; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q49: Write a program to print the following pattern:
+5
+45
+345
+2345
+12345
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+5
+45
+345
+2345
+12345
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    for (i = 5; i >= 1; i--) {
+        for (j = i; j <= 5; j++) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q50: Write a program to print the following pattern:
+*****
+ ****
+  ***
+   **
+    *
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+*****
+ ****
+  ***
+   **
+    *
+
+Input 2:
+
+Output 2:
+Note: Spaces indicate indentation.
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    for (i = 1; i <= 5; i++) {
+        // Print spaces
+        for (j = 1; j < i; j++) {
+            printf(" ");
+        }
+
+        // Print stars
+        for (j = i; j <= 5; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q51: Write a program to print the following pattern:
+    5
+   45
+  345
+ 2345
+12345
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+    5
+   45
+  345
+ 2345
+12345
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    for (i = 5; i >= 1; i--) {
+
+        // Print spaces
+        for (j = 1; j < i; j++) {
+            printf(" ");
+        }
+
+        // Print numbers
+        for (j = i; j <= 5; j++) {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q52: Write a program to print the following pattern:
+
+*
+
+*
+*
+*
+
+*
+*
+*
+*
+*
+
+*
+*
+*
+
+*
+
+
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+Pattern with stars spaced irregularly as shown.
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    // First group: 4 stars
+    for (i = 1; i <= 4; i++) {
+        printf("*\n");
+    }
+
+    printf("\n");
+
+    // Second group: 5 stars
+    for (i = 1; i <= 5; i++) {
+        printf("*\n");
+    }
+
+    printf("\n");
+
+    // Third group: 3 stars
+    for (i = 1; i <= 3; i++) {
+        printf("*\n");
+    }
+
+    printf("\n");
+
+    // Fourth group: 1 star
+    printf("*\n");
+
+    return 0;
+}
+
+Q53: Write a program to print the following pattern:
+*
+***
+*****
+*******
+*********
+*******
+*****
+***
+*
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+*
+***
+*****
+*******
+*********
+*******
+*****
+***
+*
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j, spaces;
+
+    // Upper half
+    for (i = 1; i <= 5; i++) {
+        for (spaces = 1; spaces <= 5 - i; spaces++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    // Lower half
+    for (i = 4; i >= 1; i--) {
+        for (spaces = 1; spaces <= 5 - i; spaces++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q54: Write a program to print the following pattern:
+
+   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+Pattern with layers of stars as shown.
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j, space;
+
+    // Upper part
+    for (i = 1; i <= 4; i++) {
+        for (space = 1; space <= 4 - i; space++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= 2 * i - 1; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    // Lower part
+    for (i = 3; i >= 1; i--) {
+        for (space = 1; space <= 4 - i; space++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= 2 * i - 1; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q55: Write a program to print all the prime numbers from 1 to n.
+
+/*
+Sample Test Cases:
+Input 1:
+10
+Output 1:
+2 3 5 7
+
+Input 2:
+20
+Output 2:
+2 3 5 7 11 13 17 19
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, i, j, isPrime;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    printf("Prime numbers from 1 to %d are:\n", n);
+
+    for (i = 2; i <= n; i++) {
+        isPrime = 1;
+
+        for (j = 2; j <= i / 2; j++) {
+            if (i % j == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+
+        if (isPrime == 1) {
+            printf("%d ", i);
+        }
+    }
+
+    return 0;
+}
+
+Q56: Read and print elements of a one-dimensional array.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+10 20 30
+Output 1:
+10 20 30
+
+Input 2:
+5
+1 2 3 4 5
+Output 2:
+1 2 3 4 5
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements:\n", n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array elements are:\n");
+
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
